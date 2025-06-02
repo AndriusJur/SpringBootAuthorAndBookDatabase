@@ -57,13 +57,39 @@ public class AuthorController {
         if (!authorService.isExists(id)) { //isExists has to be implemented
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
         authorDto.setId(id);
         AuthorEntity authorEntity = authorMapper.mapFrom(authorDto);
         AuthorEntity savedAuthorEntity = authorService.save(authorEntity);
         return new ResponseEntity<>(
                 authorMapper.mapTo(savedAuthorEntity),
                 HttpStatus.OK);
-
-
     }
+    @PatchMapping(path = "/authors/{id}")
+    public ResponseEntity<AuthorDto> partialUpdate(
+            @PathVariable("id") Long id,
+            @RequestBody AuthorDto authorDto
+    ){
+        if (!authorService.isExists(id)) { //isExists has to be implemented
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        AuthorEntity authorEntity = authorMapper.mapFrom(authorDto);
+        AuthorEntity updatedAuthor = authorService.partialUpdate(id,authorEntity);
+        return new ResponseEntity<>(
+                authorMapper.mapTo(updatedAuthor),
+                HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/authors/{id}")
+    public ResponseEntity deleteAuthor (@PathVariable("id") Long id){
+        authorService.delete(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);//204
+    }
+
+    @DeleteMapping(path = "/authors")    //nuclear option
+    public ResponseEntity deleteAllAuthors(){
+        authorService.delete();
+        return new ResponseEntity(HttpStatus.NO_CONTENT);//204
+    }
+
 }

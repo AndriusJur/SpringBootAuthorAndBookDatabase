@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
@@ -15,6 +16,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@TestPropertySource(locations = "classpath:application-test.properties")
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
@@ -74,8 +76,8 @@ public class AuthorEntityRepositoryIntegrationTests {
    }
 //   @Test
 //   public void testThatGetAuthorsWithAgeLessThan(){
-//      AuthorEntity testAuthorEntityA = TestDataUtil.createTestAuthorA();
-//      repository.save(testAuthorEntityA);
+//      AuthorEntity testAuthorDtoA = TestDataUtil.createTestAuthorA();
+//      repository.save(testAuthorDtoA);
 //      AuthorEntity testAuthorEntityB = TestDataUtil.createTestAuthorB();
 //      repository.save(testAuthorEntityB);
 //      AuthorEntity testAuthorEntityC = TestDataUtil.createTestAuthorC();
@@ -88,14 +90,14 @@ public class AuthorEntityRepositoryIntegrationTests {
 //
 //   @Test
 //   public void testThatGetAuthorsWithAgeGreaterThan(){
-//      AuthorEntity testAuthorEntityA = TestDataUtil.createTestAuthorA();
-//      repository.save(testAuthorEntityA);
+//      AuthorEntity testAuthorDtoA = TestDataUtil.createTestAuthorA();
+//      repository.save(testAuthorDtoA);
 //      AuthorEntity testAuthorEntityB = TestDataUtil.createTestAuthorB();
 //      repository.save(testAuthorEntityB);
 //      AuthorEntity testAuthorEntityC = TestDataUtil.createTestAuthorC();
 //      repository.save(testAuthorEntityC);
 //
 //      Iterable <AuthorEntity> result= repository.findAuthorsWithAgeGreaterThan(50);
-//      assertThat(result).containsExactly(testAuthorEntityA);
+//      assertThat(result).containsExactly(testAuthorDtoA);
 //   }
 }

@@ -8,6 +8,13 @@ public final class TestDataUtil {
     private TestDataUtil(){
 
     }
+    public static AuthorDto createTestAuthorDtoA(){
+        return AuthorDto.builder()
+                .id(1L)
+                .name("One Two")
+                .age(80)
+                .build();
+    }
 
     public static AuthorEntity createTestAuthorA() {
         return AuthorEntity.builder()
@@ -32,11 +39,7 @@ public final class TestDataUtil {
         return BookEntity.builder()
                 .isbn("1617292540")
                 .title("Spring Boot in Action")
-                .authorEntity(AuthorEntity.builder()
-                        .id(authorEntity.getId()) // use the generated ID
-                        .name("Firstname Lastname")
-                        .age(80)
-                        .build())
+                .authorEntity(authorEntity)
                 .build();
     }
 
@@ -52,22 +55,14 @@ public final class TestDataUtil {
         return BookEntity.builder()
                 .isbn("123456789")
                 .title("Crossword Puzzles")
-                .authorEntity(AuthorEntity.builder()
-                        .id(authorEntity.getId()) // use the generated ID
-                        .name("Firstname Lastname")
-                        .age(80)
-                        .build())
+                .authorEntity(authorEntity)
                 .build();
     }
     public static BookEntity createTestBookC(final AuthorEntity authorEntity) {
         return BookEntity.builder()
                 .isbn("161729442540")
                 .title("Puzzles Without Crosswords")
-                .authorEntity(AuthorEntity.builder()
-                        .id(authorEntity.getId()) // use the generated ID
-                        .name("Firstname Lastname")
-                        .age(80)
-                        .build())
+                .authorEntity(authorEntity)
                 .build();
     }
 }
