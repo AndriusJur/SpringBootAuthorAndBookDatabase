@@ -15,10 +15,10 @@ A simple web application. Shows my learning path through:
 
 * Java 17
 * postgreSQL database running.
-* Credentials needed:
-     Database: postgres
-     Username: postgres
-     Password: postgres
+* Credentials needed to connect to database:
+    - Database: postgres
+    - Username: postgres
+    - Password: postgres
   
 ## Roadmap
 * implement Elasticsearch integration
